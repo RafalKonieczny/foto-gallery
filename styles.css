@@ -51,7 +51,7 @@ h1 {
 }
 
 .thumbnail:hover {
-    transform:scale(1.1)
+    transform:scale(1.1);
 }
 
 .thumbnail img {
@@ -60,7 +60,13 @@ h1 {
     width: 100%;
 }
 
+.thumbnail img:focus,
+.thumbnail img.focus {
+    border: solid 5px;
+}
+
 .popup {
+    animation: fadeIn 0.3s;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     display: flex;
@@ -78,6 +84,10 @@ h1 {
     display: none;
 }
 
+.popup.fade-out {
+    animation: fadeOut 0.3s both;
+}
+
 .popup img {
     max-height: 80%;
     max-width: 80%;
@@ -86,11 +96,59 @@ h1 {
 .popup__close {
     background-color: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    font-size: 128px;
+    color: white;
+    font-size: 96px;
     position: fixed;
     top: 32px;
     right: 32px;
-
 }
+
+.popup__arrow {
+    border: none;
+    border-radius: 50%;
+    font-size: 96px;
+    height: 96px;
+    line-height: 96px;
+    position: absolute;
+    top: 50%;
+    width: 96px;
+}
+
+.popup__arrow,
+.popup__close {
+    transition: opacity 0.3s; 
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.popup__arrow:hover,
+.popup__close:hover {
+    opacity: 1;
+}
+
+.popup__arrow--left {
+    left: 10%;
+}
+
+.popup__arrow--right {
+    right: 10%;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from{
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
